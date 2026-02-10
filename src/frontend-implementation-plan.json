@@ -1,0 +1,184 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "geode+ mod discovery web app (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Deliver the core geode+ browsing experience: mod catalog list, mod details view, and the ability to save/unsave mods to a personal library (without any game-client modification behavior).",
+      "acceptanceCriteria": [
+        "App name “geode+” is visible in the UI (header/title/metadata).",
+        "Users can browse a list of mods and open a mod details view.",
+        "Users can add/remove a mod from their personal library (requires sign-in).",
+        "No functionality attempts to patch, inject into, or directly modify Geometry Dash binaries."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Ensure app title/metadata reflects “geode+” (and avoids any App Store availability claims)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Implement the top-level app shell for geode+ with navigation, route wiring (Explore, Mod Details, My Library, About/Disclaimer), and ensure the UI surfaces the app name “geode+”. Use shadcn-ui components (e.g., button/card/input primitives from frontend/src/components/ui via composition only) for consistent UI; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/backend/mods.ts",
+          "operation": "create",
+          "description": "Add a thin frontend data-access layer that calls the existing backend interface methods to list mods, fetch a mod, and add/remove mods from the user library (no backend changes)."
+        },
+        {
+          "path": "frontend/src/components/mods/ModCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable mod summary card component for list rendering (name/author/version/tags/short description + link to details). Use shadcn-ui card/badge/button primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/mods/SaveButton.tsx",
+          "operation": "create",
+          "description": "Create a save/unsave control that toggles the mod in “My Library” for authenticated users and prompts sign-in when unauthenticated. Use shadcn-ui button primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "create",
+          "description": "Build the Explore/Home page that fetches and displays the public mod catalog, using ModCard components, and provides search + tag filtering UI. Use shadcn-ui input/badge/button primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ModDetailsPage.tsx",
+          "operation": "create",
+          "description": "Build the Mod Details page that fetches a single mod by id/slug, displays all fields (including optional external links), and includes the SaveButton. Use shadcn-ui typography/card/button primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/MyLibraryPage.tsx",
+          "operation": "create",
+          "description": "Build the My Library page that shows only the signed-in user’s saved mods list and allows removing saved mods. Use shadcn-ui card/button primitives via composition only; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement Internet Identity sign-in/sign-out flows and profile setup so each user has a private, persistent My Library.",
+      "acceptanceCriteria": [
+        "Users can sign in and sign out with Internet Identity.",
+        "After signing in, users can add/remove mods to/from “My Library.”",
+        "A user’s library persists across reloads and is isolated from other users."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/LoginButton.tsx",
+          "operation": "create",
+          "description": "Add a login/logout button wired to the existing Internet Identity hook and ensure logout clears cached app data (React Query cache). Use the selected authorization component guidance for Internet Identity UX and cache clearing; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Add a first-login profile setup modal that prompts for a display name when getCallerUserProfile() returns null, and persists it with saveCallerUserProfile(). Use the selected authorization component guidance to prevent modal flash; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useCurrentUser.ts",
+          "operation": "create",
+          "description": "Create a hook that composes useInternetIdentity + useActor + getCallerUserProfile/getCallerUserRole and exposes derived auth state for the UI (authenticated/guest, profile loading state). Use the selected authorization component patterns for actor-dependent queries; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/RequireAuth.tsx",
+          "operation": "create",
+          "description": "Create a simple guard wrapper that blocks My Library interactions for guests and directs users to sign in (and optionally shows an access-denied style state). Use the selected authorization component’s guidance on access control UI; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire LoginButton into the header/nav, mount ProfileSetupModal at the app-shell level after successful login, and guard the My Library route via RequireAuth. Use shadcn-ui components via composition only; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create the required core pages: Explore (with search + tag filtering), Mod Details (full fields + save/unsave), My Library (user-only), and About/Disclaimer.",
+      "acceptanceCriteria": [
+        "Explore page supports text search and tag filtering on the mod catalog.",
+        "Mod Details shows all mod fields and a clear save/unsave control.",
+        "My Library shows only the signed-in user’s saved mods.",
+        "About/Disclaimer page is accessible from navigation and uses English text."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "create",
+          "description": "Create the About/Disclaimer page with clear English disclaimer text stating it is an independent companion app and not affiliated with Geometry Dash or Geode, and that it does not modify the game client. Use shadcn-ui typography primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/AppHeader.tsx",
+          "operation": "create",
+          "description": "Create a header component containing app branding (name + logo), primary navigation (Explore, My Library, About), and LoginButton. Use shadcn-ui button/navigation primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "create",
+          "description": "Create a layout component for consistent page chrome (header + main container + background styling hooks) used across all routes. Use shadcn-ui layout primitives via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure all four pages are routed and navigable from the header navigation, with Mod Details reachable from Explore/My Library mod items and About/Disclaimer reachable from navigation. Use shadcn-ui components via composition only; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Apply a consistent “arcade terminal” visual theme: dark charcoal base with lime/green accents across all UI elements.",
+      "acceptanceCriteria": [
+        "Theme is consistent across all pages (navigation, cards, buttons, inputs).",
+        "Primary accents are lime/green on a dark charcoal base (not blue/purple primary).",
+        "UI remains readable with sufficient contrast."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define/adjust global CSS variables and base styles to achieve a dark charcoal background and lime/green primary accents, ensuring readable typography and sufficient contrast across the app."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Align Tailwind theme tokens (primary/accent/background/foreground) with the arcade terminal palette so composed shadcn-ui components inherit the correct colors (avoid blue/purple as primary)."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Apply consistent layout-level styling hooks (background, spacing, typography rhythm) so all pages share the same arcade terminal aesthetic. Use shadcn-ui components via composition only; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add generated static image assets (logo + hero) under frontend/public/assets/generated and display them in the header and Explore/Home page.",
+      "acceptanceCriteria": [
+        "Generated images exist in frontend/public/assets/generated and are referenced directly by the frontend (no backend image serving).",
+        "Logo is visible in the header/nav area.",
+        "Hero/banner image is visible on the Explore/Home page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/geodeplus-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated app logo asset at frontend/public/assets/generated/geodeplus-logo.dim_512x512.png and ensure it is treated as a static frontend asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/geodeplus-hero.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated hero/banner asset at frontend/public/assets/generated/geodeplus-hero.dim_1600x900.png and ensure it is treated as a static frontend asset."
+        },
+        {
+          "path": "frontend/src/components/layout/AppHeader.tsx",
+          "operation": "modify",
+          "description": "Render the logo image from frontend/public/assets/generated/geodeplus-logo.dim_512x512.png within the header/nav branding area. Use shadcn-ui components via composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "modify",
+          "description": "Render the hero/banner image from frontend/public/assets/generated/geodeplus-hero.dim_1600x900.png prominently on the Explore/Home page (integrated into the existing page layout, not as a new route). Use shadcn-ui components via composition only; verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

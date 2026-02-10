@@ -1,0 +1,18 @@
+{
+  "frontend/src/index.css": "Global styles with arcade terminal theme using OKLCH colors (dark charcoal backgrounds with lime/green accents) and custom arcade-glow/arcade-border utility classes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with arcade-inspired design tokens, custom fonts (Inter/JetBrains Mono), glow shadows, and pulse-glow animation.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, ThemeProvider wrapper, and route definitions for Explore, Mod Details, My Library, and About pages.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including fetching mods, managing user library (add/remove), and user profile management.",
+  "frontend/src/hooks/useCurrentUser.ts": "Composite hook that combines Internet Identity authentication state with user profile data for easy consumption across components.",
+  "frontend/src/components/layout/AppLayout.tsx": "Root layout component providing consistent page structure with header, main content area, and footer with caffeine.ai attribution.",
+  "frontend/src/components/layout/AppHeader.tsx": "Sticky header with logo, navigation links (Explore/Library/About), login button, and responsive mobile menu.",
+  "frontend/src/components/auth/LoginButton.tsx": "Authentication button component handling Internet Identity login/logout with loading states and query cache clearing.",
+  "frontend/src/components/auth/ProfileSetupModal.tsx": "Modal dialog that prompts new users to set their display name on first login, preventing flash with proper loading state checks.",
+  "frontend/src/components/auth/RequireAuth.tsx": "Guard component that displays an authentication prompt for unauthenticated users trying to access protected content.",
+  "frontend/src/components/mods/ModCard.tsx": "Reusable mod card component displaying mod summary with name, author, version, description, tags, and save button.",
+  "frontend/src/components/mods/SaveButton.tsx": "Interactive button for adding/removing mods from user library with authentication prompt for guests and optimistic UI updates.",
+  "frontend/src/pages/ExplorePage.tsx": "Home page displaying hero banner, search input, tag filters, and grid of all available mods with real-time filtering.",
+  "frontend/src/pages/ModDetailsPage.tsx": "Detailed mod view showing full description, tags, external links, and save functionality with back navigation.",
+  "frontend/src/pages/MyLibraryPage.tsx": "Protected page displaying user's saved mods collection with authentication guard and empty state messaging.",
+  "frontend/src/pages/AboutPage.tsx": "Information page with app description, features list, and prominent disclaimer clarifying the app is independent and doesn't modify Geometry Dash."
+}

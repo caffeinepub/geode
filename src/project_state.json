@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Create an iOS App Store app called \"geode+\" that provides Geode-like functionality for Geometry Dash.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- App logo mark, neon lime on dark charcoal, simple geometric/glyph style (geodeplus-logo.dim_512x512.png)\n- Wide hero banner with abstract geometric shards/crystals, dark charcoal background with lime highlights (geodeplus-hero.dim_1600x900.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-web-application-named-geode-that-provides-a-geode-like-experience-for-geometry-dash-focused-on-mod-discovery-and-management-metadata-not-modifying-the-geometry-dash-game-client-users-can-browse-a-catalog-of-mods-view-mod-details-and-save-mods-to-a-personal-library",
+      "title": "Create a web application named “geode+” that provides a Geode-like experience for Geometry Dash focused on mod discovery and management metadata (not modifying the Geometry Dash game client): users can browse a catalog of mods, view mod details, and save mods to a personal library.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-internet-identity-authentication-so-each-user-can-maintain-a-private-persistent-my-library-list-of-saved-mods",
+      "title": "Implement Internet Identity authentication so each user can maintain a private, persistent “My Library” list of saved mods.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-frontend-build-core-pages-components-1-home-explore-mod-list-with-search-and-tag-filtering-2-mod-details-full-information-save-unsave-button-3-my-library-saved-mods-list-and-4-about-disclaimer-page-clarifying-this-is-an-independent-companion-app-and-not-affiliated-with-geometry-dash-or-geode",
+      "title": "Frontend: build core pages/components: (1) Home/Explore (mod list with search and tag filtering), (2) Mod Details (full information + save/unsave button), (3) My Library (saved mods list), and (4) About/Disclaimer page clarifying this is an independent companion app and not affiliated with Geometry Dash or Geode.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-distinct-visual-theme-for-geode-across-the-ui-colors-typography-spacing-and-components-use-a-modern-arcade-terminal-aesthetic-with-dark-charcoal-backgrounds-and-lime-green-accents-avoid-a-blue-purple-primary-palette",
+      "title": "Apply a coherent, distinct visual theme for “geode+” across the UI (colors, typography, spacing, and components). Use a modern “arcade terminal” aesthetic with dark charcoal backgrounds and lime/green accents (avoid a blue/purple primary palette).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-and-display-generated-static-image-assets-an-app-logo-and-a-hero-banner-illustration-in-the-frontend-stored-under-frontend-public-assets-generated-and-used-on-the-home-page-and-or-header",
+      "title": "Add and display generated static image assets: an app logo and a hero/banner illustration in the frontend, stored under frontend/public/assets/generated, and used on the Home page and/or header.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build an iOS App Store app named \"geode+\" that is like Geode for Geometry Dash",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Backend: add Motoko data models and API methods to store and query mod catalog entries (public) and user library entries (per-user). Include basic fields: id/slug, name, author, version, short description, long description, tags, and optional external links.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Provide an initial curated set of sample mods seeded in the backend so the app is usable immediately after deployment (seed data can be stored in-code).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "geode+",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

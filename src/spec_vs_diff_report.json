@@ -1,0 +1,92 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T01:16:29.870Z",
+  "summary": "Diff adds a Motoko backend actor with mod and library models plus authorization mixin, and a React/TanStack Router frontend with Explore, Mod Details, My Library (auth-gated), and About/Disclaimer pages. It also adds Internet Identity auth hooks/UI, a profile setup modal, lime-on-charcoal theme variables, and references to generated logo/hero assets. Some key backend and asset verification is limited due to truncation/omitted files.",
+  "missing_requirements": [
+    {
+      "id": "REQ-3",
+      "requirement": "Backend exposes query methods to list mods and fetch a mod by id/slug; exposes authenticated methods to add/remove/list a user’s saved mods.",
+      "reason": "Frontend calls actor methods (getAllMods, getMod, getMyLibrary, addToLibrary, removeFromLibrary), but backend/main.mo is truncated before showing these method definitions, so their existence/signatures cannot be confirmed from the provided diff summary.",
+      "evidence": [
+        "backend/main.mo (truncated)",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "At least 8 sample mods exist with varied tags and descriptions seeded in the backend.",
+      "reason": "Only three seeded mods are visible in the truncated backend snippet; additional seed entries may exist beyond the truncation but are not evidenced in the diff summary.",
+      "evidence": [
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Generated images exist in frontend/public/assets/generated (logo + hero) and are referenced directly by the frontend.",
+      "reason": "Frontend references the expected asset paths, but the actual image files under frontend/public/assets/generated are not shown in the diff summary (some files were omitted), so existence cannot be verified from the provided evidence.",
+      "evidence": [
+        "frontend/src/components/layout/AppHeader.tsx",
+        "frontend/src/pages/ExplorePage.tsx",
+        "File diff summary: Omitted files due to limits: added=6"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile capture and persistence (ProfileSetupModal, UserProfile type, profile save/get endpoints) beyond mod catalog and library.",
+      "reason": "BuildRequest requirements focus on mod catalog browsing/details and a saved-mod library with Internet Identity; no requirement mentions collecting/storing a user display name or profile workflow.",
+      "evidence": [
+        "frontend/src/components/auth/ProfileSetupModal.tsx",
+        "frontend/src/hooks/useCurrentUser.ts",
+        "frontend/src/hooks/useQueries.ts",
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "description": "Admin/access-control initialization via secret URL parameter (caffeineAdminToken) and authorization mixin integration.",
+      "reason": "BuildRequest does not request admin token flows or access control initialization from URL/session parameters; it only requires Internet Identity auth for per-user libraries and a single Motoko actor backend.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/utils/urlParams.ts (truncated)",
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "description": "Footer attribution/link to caffeine.ai with UTM parameters.",
+      "reason": "Not requested by the BuildRequest and unrelated to the specified app functionality/theme requirements.",
+      "evidence": [
+        "frontend/src/components/layout/AppLayout.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.68,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/auth/LoginButton.tsx",
+    "frontend/src/components/auth/ProfileSetupModal.tsx",
+    "frontend/src/components/auth/RequireAuth.tsx",
+    "frontend/src/components/layout/AppHeader.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/components/mods/ModCard.tsx",
+    "frontend/src/components/mods/SaveButton.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCurrentUser.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/ExplorePage.tsx",
+    "frontend/src/pages/ModDetailsPage.tsx",
+    "frontend/src/pages/MyLibraryPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

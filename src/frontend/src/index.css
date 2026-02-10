@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.25rem;
+        /* Light mode - charcoal with lime accents */
+        --background: 0.25 0.01 120;
+        --foreground: 0.95 0.02 127;
+        --card: 0.30 0.01 120;
+        --card-foreground: 0.95 0.02 127;
+        --popover: 0.30 0.01 120;
+        --popover-foreground: 0.95 0.02 127;
+        --primary: 0.75 0.18 127;
+        --primary-foreground: 0.15 0.01 120;
+        --secondary: 0.35 0.01 120;
+        --secondary-foreground: 0.95 0.02 127;
+        --muted: 0.35 0.01 120;
+        --muted-foreground: 0.65 0.02 127;
+        --accent: 0.75 0.18 127;
+        --accent-foreground: 0.15 0.01 120;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.40 0.02 127;
+        --input: 0.40 0.02 127;
+        --ring: 0.75 0.18 127;
+        --chart-1: 0.75 0.18 127;
+        --chart-2: 0.65 0.15 140;
+        --chart-3: 0.55 0.12 110;
+        --chart-4: 0.70 0.16 150;
+        --chart-5: 0.60 0.14 100;
+    }
+
+    .dark {
+        /* Dark mode - deep charcoal with bright lime accents */
+        --background: 0.15 0.01 120;
+        --foreground: 0.92 0.02 127;
+        --card: 0.20 0.01 120;
+        --card-foreground: 0.92 0.02 127;
+        --popover: 0.18 0.01 120;
+        --popover-foreground: 0.92 0.02 127;
+        --primary: 0.80 0.20 127;
+        --primary-foreground: 0.10 0.01 120;
+        --secondary: 0.25 0.01 120;
+        --secondary-foreground: 0.92 0.02 127;
+        --muted: 0.25 0.01 120;
+        --muted-foreground: 0.60 0.02 127;
+        --accent: 0.80 0.20 127;
+        --accent-foreground: 0.10 0.01 120;
+        --destructive: 0.60 0.22 27;
+        --destructive-foreground: 0.95 0.02 127;
+        --border: 0.30 0.02 127;
+        --input: 0.30 0.02 127;
+        --ring: 0.80 0.20 127;
+        --chart-1: 0.80 0.20 127;
+        --chart-2: 0.70 0.17 140;
+        --chart-3: 0.60 0.14 110;
+        --chart-4: 0.75 0.18 150;
+        --chart-5: 0.65 0.16 100;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+}
+
+@layer components {
+    .arcade-glow {
+        text-shadow: 0 0 10px oklch(var(--primary) / 0.5);
+    }
+    
+    .arcade-border {
+        border: 1px solid oklch(var(--primary) / 0.3);
+        box-shadow: 0 0 15px oklch(var(--primary) / 0.1);
+    }
+}

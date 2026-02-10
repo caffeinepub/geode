@@ -1,0 +1,116 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-web-application-named-geode-that-provides-a-geode-like-experience-for-geometry-dash-focused-on-mod-discovery-and-management-metadata-not-modifying-the-geometry-dash-game-client-users-can-browse-a-catalog-of-mods-view-mod-details-and-save-mods-to-a-personal-library",
+      "featureTitle": "Create a web application named “geode+” that provides a Geode-like experience for Geometry Dash focused on mod discovery and management metadata (not modifying the Geometry Dash game client): users can browse a catalog of mods, view mod details, and save mods to a personal library.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/components/mods/ModCard.tsx",
+        "frontend/src/components/mods/SaveButton.tsx",
+        "frontend/src/pages/ExplorePage.tsx",
+        "frontend/src/pages/ModDetailsPage.tsx",
+        "frontend/src/pages/MyLibraryPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-internet-identity-authentication-so-each-user-can-maintain-a-private-persistent-my-library-list-of-saved-mods",
+      "featureTitle": "Implement Internet Identity authentication so each user can maintain a private, persistent “My Library” list of saved mods.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/LoginButton.tsx",
+        "frontend/src/components/auth/ProfileSetupModal.tsx",
+        "frontend/src/components/auth/RequireAuth.tsx",
+        "frontend/src/hooks/useCurrentUser.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-frontend-build-core-pages-components-1-home-explore-mod-list-with-search-and-tag-filtering-2-mod-details-full-information-save-unsave-button-3-my-library-saved-mods-list-and-4-about-disclaimer-page-clarifying-this-is-an-independent-companion-app-and-not-affiliated-with-geometry-dash-or-geode",
+      "featureTitle": "Frontend: build core pages/components: (1) Home/Explore (mod list with search and tag filtering), (2) Mod Details (full information + save/unsave button), (3) My Library (saved mods list), and (4) About/Disclaimer page clarifying this is an independent companion app and not affiliated with Geometry Dash or Geode.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/AppHeader.tsx",
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/pages/AboutPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-coherent-distinct-visual-theme-for-geode-across-the-ui-colors-typography-spacing-and-components-use-a-modern-arcade-terminal-aesthetic-with-dark-charcoal-backgrounds-and-lime-green-accents-avoid-a-blue-purple-primary-palette",
+      "featureTitle": "Apply a coherent, distinct visual theme for “geode+” across the UI (colors, typography, spacing, and components). Use a modern “arcade terminal” aesthetic with dark charcoal backgrounds and lime/green accents (avoid a blue/purple primary palette).",
+      "files": [
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-and-display-generated-static-image-assets-an-app-logo-and-a-hero-banner-illustration-in-the-frontend-stored-under-frontend-public-assets-generated-and-used-on-the-home-page-and-or-header",
+      "featureTitle": "Add and display generated static image assets: an app logo and a hero/banner illustration in the frontend, stored under frontend/public/assets/generated, and used on the Home page and/or header.",
+      "files": [
+        "frontend/src/components/layout/AppHeader.tsx",
+        "frontend/src/pages/ExplorePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

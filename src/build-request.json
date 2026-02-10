@@ -1,0 +1,145 @@
+{
+  "kind": "build_request",
+  "title": "Build “geode+” Geode-like mod discovery web app for Geometry Dash",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a web application named “geode+” that provides a Geode-like experience for Geometry Dash focused on mod discovery and management metadata (not modifying the Geometry Dash game client): users can browse a catalog of mods, view mod details, and save mods to a personal library.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make me a app that is geode for geometry dash but you can get it on the App Store and it’s called geode+"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App name “geode+” is visible in the UI (header/title/metadata).",
+        "Users can browse a list of mods and open a mod details view.",
+        "Users can add/remove a mod from their personal library (requires sign-in).",
+        "No functionality attempts to patch, inject into, or directly modify Geometry Dash binaries."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement Internet Identity authentication so each user can maintain a private, persistent “My Library” list of saved mods.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make me a app that is geode for geometry dash... called geode+"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can sign in and sign out with Internet Identity.",
+        "After signing in, users can add/remove mods to/from “My Library.”",
+        "A user’s library persists across reloads and is isolated from other users."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Backend: add Motoko data models and API methods to store and query mod catalog entries (public) and user library entries (per-user). Include basic fields: id/slug, name, author, version, short description, long description, tags, and optional external links.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make me a app... like geode for geometry dash... called geode+"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes query methods to list mods and fetch a mod by id/slug.",
+        "Backend exposes authenticated methods to add/remove/list a user’s saved mods.",
+        "Mod ids are stable and user library references remain valid for existing mods."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Frontend: build core pages/components: (1) Home/Explore (mod list with search and tag filtering), (2) Mod Details (full information + save/unsave button), (3) My Library (saved mods list), and (4) About/Disclaimer page clarifying this is an independent companion app and not affiliated with Geometry Dash or Geode.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make me a app that is geode for geometry dash... called geode+"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Explore page supports text search and tag filtering on the mod catalog.",
+        "Mod Details shows all mod fields and a clear save/unsave control.",
+        "My Library shows only the signed-in user’s saved mods.",
+        "About/Disclaimer page is accessible from navigation and uses English text."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Provide an initial curated set of sample mods seeded in the backend so the app is usable immediately after deployment (seed data can be stored in-code).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A fresh deploy shows a non-empty mod catalog without requiring an admin UI.",
+        "At least 8 sample mods exist with varied tags and descriptions."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Apply a coherent, distinct visual theme for “geode+” across the UI (colors, typography, spacing, and components). Use a modern “arcade terminal” aesthetic with dark charcoal backgrounds and lime/green accents (avoid a blue/purple primary palette).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Theme is consistent across all pages (navigation, cards, buttons, inputs).",
+        "Primary accents are lime/green on a dark charcoal base (not blue/purple primary).",
+        "UI remains readable with sufficient contrast."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add and display generated static image assets: an app logo and a hero/banner illustration in the frontend, stored under frontend/public/assets/generated, and used on the Home page and/or header.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist in frontend/public/assets/generated and are referenced directly by the frontend (no backend image serving).",
+        "Logo is visible in the header/nav area.",
+        "Hero/banner image is visible on the Explore/Home page."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not claim App Store availability or implement App Store submission workflows (the delivered app is a web app on the Internet Computer).",
+    "Do not implement or describe functionality that patches, injects into, or modifies the Geometry Dash game client.",
+    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services).",
+    "Do not edit any frontend files under frontend/src/components/ui or other immutablePaths; compose them instead."
+  ],
+  "nonGoals": [
+    "Building a native iOS application.",
+    "Direct integration with Geometry Dash process memory, files, or binaries.",
+    "Real-time chat or WebSocket-based features.",
+    "Third-party authentication providers other than Internet Identity.",
+    "External database integration."
+  ],
+  "imageRequirements": {
+    "required": [
+      "App logo mark, neon lime on dark charcoal, simple geometric/glyph style (geodeplus-logo.dim_512x512.png)",
+      "Wide hero banner with abstract geometric shards/crystals, dark charcoal background with lime highlights (geodeplus-hero.dim_1600x900.png)"
+    ],
+    "edits": []
+  }
+}
